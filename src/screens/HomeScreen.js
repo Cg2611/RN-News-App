@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient'; // Import LinearGradient for background effect
 
 const categories = [
   { id: 'top', title: 'Top News' },
@@ -17,8 +18,8 @@ const categories = [
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>News Categories</Text>
+    <LinearGradient colors={['#0f2027', '#203a43', '#2c5364']} style={styles.container}>
+      {/* <Text style={styles.header}>📰 Latest News</Text> */}
       <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {categories.map((category) => (
           <TouchableOpacity
@@ -30,37 +31,45 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
-    paddingTop: 20, 
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
   header: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    color: '#fff',
+    marginBottom: 20,
   },
   scrollContainer: {
     alignItems: 'center',
-    paddingBottom: 20, // To prevent content from being cut off at the bottom
+    paddingBottom: 30,
   },
   tile: {
-    backgroundColor: '#007bff',
-    padding: 20,
+    backgroundColor: '#ffffff',
+    paddingVertical: 20,
+    paddingHorizontal: 25,
     marginVertical: 10,
-    borderRadius: 10,
-    width: '80%',
+    borderRadius: 12,
+    width: '90%',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 5, // For Android shadow effect
   },
   tileText: {
-    color: '#fff',
+    color: '#333',
     fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
